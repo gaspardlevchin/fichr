@@ -10,3 +10,8 @@ node_modules
 .data
 storage
 .DS_Store
+
+# SQLite local runtime files
+db/*.sqlite
+db/*.sqlite-shm
+db/*.sqlite-wal
