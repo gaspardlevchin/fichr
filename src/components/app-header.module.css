@@ -1,0 +1,226 @@
+.shell {
+  position: relative;
+}
+
+.drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 0 solid transparent;
+  background: var(--fichr-header);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    grid-template-rows 180ms ease-out,
+    border-color 140ms ease-out,
+    border-width 140ms ease-out,
+    opacity 120ms ease-out,
+    visibility 0s linear 180ms;
+}
+
+.drawerOpen {
+  grid-template-rows: 1fr;
+  border-bottom: 1px solid var(--fichr-border);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.045);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition:
+    grid-template-rows 180ms ease-out,
+    border-color 140ms ease-out,
+    border-width 140ms ease-out,
+    opacity 120ms ease-out;
+}
+
+.sessionDrawer {
+  border-top: 1px solid var(--fichr-border-soft);
+}
+
+.sessionPanel {
+  width: min(1280px, 100%);
+  min-height: 0;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0 var(--space-page);
+  transition: padding 180ms ease-out;
+}
+
+.drawerOpen .sessionPanel {
+  padding-top: 12px;
+  padding-bottom: 14px;
+}
+
+.sessionHeader,
+.sessionBody {
+  display: grid;
+  align-items: center;
+}
+
+.sessionHeader {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  border-bottom: 1px solid var(--fichr-border-soft);
+  padding-bottom: 11px;
+}
+
+.sessionIdentity {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 13px;
+}
+
+.sessionAvatar {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border: 1px solid var(--fichr-border);
+  border-radius: 50%;
+  background: var(--fichr-white);
+  box-shadow: var(--shadow-reference-soft);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.sessionIdentity > div {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.sessionEyebrow {
+  margin: 0;
+  color: var(--fichr-muted);
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sessionEmail {
+  overflow-wrap: anywhere;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.sessionBody {
+  grid-template-columns: minmax(190px, 0.7fr) minmax(260px, 1fr) auto;
+  gap: 22px;
+  padding-top: 11px;
+}
+
+.sessionPlan {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 10px;
+  align-items: baseline;
+}
+
+.sessionPlan > span,
+.sessionPlan small {
+  color: var(--fichr-muted);
+  font-size: 0.68rem;
+}
+
+.sessionPlan strong {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.sessionPlan small {
+  grid-column: 2;
+}
+
+.sessionLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  align-items: center;
+  border-left: 1px solid var(--fichr-border-soft);
+  padding-left: 22px;
+}
+
+.sessionLinks a {
+  border-radius: 7px;
+  padding: 5px 0;
+  color: var(--fichr-text-soft);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.sessionLinks a:hover,
+.sessionLinks a:focus-visible {
+  color: var(--fichr-text);
+  font-weight: 600;
+}
+
+.sessionActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sessionLogout,
+.sessionClose {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 500;
+}
+
+.sessionLogout {
+  color: var(--fichr-text);
+}
+
+.sessionClose {
+  padding: 6px 0;
+  color: var(--fichr-muted);
+}
+
+.sessionLogout:hover,
+.sessionLogout:focus-visible,
+.sessionClose:hover,
+.sessionClose:focus-visible {
+  color: var(--fichr-text);
+}
+
+.sessionLinks a:focus-visible,
+.sessionLogout:focus-visible,
+.sessionClose:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.2);
+  outline-offset: 4px;
+}
+
+@media (max-width: 860px) {
+  .sessionBody {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sessionActions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .sessionBody {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sessionLinks {
+    border-top: 1px solid var(--fichr-border-soft);
+    border-left: 0;
+    padding-top: 14px;
+    padding-left: 0;
+  }
+
+  .sessionActions {
+    grid-column: 1;
+  }
+}
