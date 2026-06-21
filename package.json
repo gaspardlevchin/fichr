@@ -112,6 +112,7 @@
     "postcss": "^8.5.10"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.0",
     "@types/better-sqlite3": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
